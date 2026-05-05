@@ -1065,6 +1065,7 @@ export function ProjectView({
               role="textbox"
               suppressContentEditableWarning
               contentEditable
+              dir="auto"
               onBlur={(e) => handleProjectRename(e.currentTarget.textContent ?? '')}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
