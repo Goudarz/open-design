@@ -384,7 +384,7 @@ export function ChatPane({
                   />
                 );
               })}
-              {error ? <div className="msg error">{error}</div> : null}
+              {error ? <div className="msg error" dir="auto">{error}</div> : null}
             </div>
             {scrolledFromBottom ? (
               <button
@@ -468,7 +468,7 @@ function ConversationRow({
           type="button"
           className="chat-conv-item-name"
           data-testid={`conversation-select-${conversation.id}`}
-          style={{ background: 'transparent', border: 'none', padding: 0, textAlign: 'left' }}
+          style={{ background: 'transparent', border: 'none', padding: 0 }}
           onClick={onSelect}
           onDoubleClick={() => {
             if (!onRename) return;
@@ -547,7 +547,7 @@ function UserMessage({
           })}
         </div>
       ) : null}
-      <div className="user-text">{message.content}</div>
+      <div className="user-text" dir="auto">{message.content}</div>
     </div>
   );
 }
