@@ -90,7 +90,7 @@ export function PromptTemplatePreviewModal({ summary, onClose }: Props) {
     >
       <div className="prompt-template-modal">
         <header className="prompt-template-modal-head">
-          <div className="prompt-template-modal-titles">
+          <div className="prompt-template-modal-titles" dir="auto">
             <h2>{summary.title}</h2>
             <p>{summary.summary}</p>
           </div>
@@ -178,7 +178,7 @@ export function PromptTemplatePreviewModal({ summary, onClose }: Props) {
                   : t('promptTemplates.copyPrompt')}
               </button>
             </div>
-            <pre className="prompt-template-modal-prompt-body">
+            <pre className="prompt-template-modal-prompt-body" dir="auto">
               {detail
                 ? detail.prompt
                 : error
