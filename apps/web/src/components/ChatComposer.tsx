@@ -282,6 +282,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, Props>(
           ) : null}
           <div className="composer-input-wrap">
             <textarea
+              dir="auto"
               ref={textareaRef}
               data-testid="chat-composer-input"
               value={draft}
