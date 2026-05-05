@@ -194,10 +194,13 @@ export function DesignFilesPanel({
                           const rect = (e.target as HTMLElement)
                             .closest('.df-row-menu')
                             ?.getBoundingClientRect();
+                          const isRTL =
+                            typeof document !== 'undefined' &&
+                            document.documentElement.dir === 'rtl';
                           setMenuPos({
                             name: f.name,
                             top: (rect?.bottom ?? 0) + 4,
-                            left: (rect?.right ?? 0) - 160,
+                            left: (rect?.right ?? 0) - (isRTL ? 17 : 160),
                           });
                         }}
                       >
@@ -303,7 +306,7 @@ function DfPreview({
   const url = projectFileUrl(projectId, file.name);
   return (
     <aside className="df-preview">
-      <div className="df-preview-thumb">
+      <div className="df-preview-thumb" dir="auto">
         {file.kind === 'image' || file.kind === 'sketch' ? (
           <img src={`${url}?v=${Math.round(file.mtime)}`} alt={file.name} />
         ) : file.kind === 'html' ? (
@@ -343,7 +346,7 @@ function DfPreview({
           <Icon name="eye" size={13} />
           <span>{t('designFiles.previewOpen')}</span>
         </button>
-        <div className="df-preview-name">{file.name}</div>
+        <div className="df-preview-name" dir="auto">{file.name}</div>
         <div className="df-preview-kind">{kindLabel(file.kind, t)}</div>
         <div className="df-preview-stats">
           {t('designFiles.modified', {
