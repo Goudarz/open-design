@@ -241,8 +241,8 @@ export function DesignsTab({ projects, skills, designSystems, onOpen, onDelete }
                           >
                             <Icon name="close" size={12} />
                           </button>
-                          <div className="design-kanban-card-name" title={p.name}>{p.name}</div>
-                          <div className="design-kanban-card-meta">
+                          <div className="design-kanban-card-name" title={p.name} dir="auto">{p.name}</div>
+                          <div className="design-kanban-card-meta" dir="auto">
                             {ds ? <span className="ds">{ds}</span> : <span>{t('designs.cardFreeform')}</span>}
                             {skill ? ` · ${skill}` : ''}
                             {p.status?.updatedAt ? ` · ${relativeTime(p.status.updatedAt, t)}` : ''}
