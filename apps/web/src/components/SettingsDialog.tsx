@@ -13,6 +13,7 @@ import { KNOWN_PROVIDERS } from '../state/config';
 import type { AgentInfo, AppConfig, AppVersionInfo, ExecMode } from '../types';
 import { MEDIA_PROVIDERS } from '../media/models';
 import type { MediaProvider } from '../media/models';
+import { dir } from 'node:console';
 
 interface Props {
   initial: AppConfig;
@@ -392,6 +393,7 @@ export function SettingsDialog({
                     value={cfg.apiKey}
                     onChange={(e) => setCfg({ ...cfg, apiKey: e.target.value })}
                     autoFocus
+                    dir="auto"
                   />
                   <button
                     type="button"
@@ -412,6 +414,7 @@ export function SettingsDialog({
                   value={cfg.model}
                   list="suggested-models"
                   onChange={(e) => setCfg({ ...cfg, model: e.target.value })}
+                  dir="auto"
                 />
                 <datalist id="suggested-models">
                   {SUGGESTED_MODELS.map((m) => (
@@ -425,11 +428,13 @@ export function SettingsDialog({
                   type="text"
                   value={cfg.baseUrl}
                   onChange={(e) => setCfg({ ...cfg, baseUrl: e.target.value })}
+                  dir="auto"
                 />
               </label>
               <label className="field">
                 <span className="field-label">Quick fill provider</span>
                 <select
+                  dir="auto"
                   value=""
                   onChange={(e) => {
                     const idx = Number(e.target.value);
@@ -664,6 +669,7 @@ function MediaProvidersSection({
                   value={entry.baseUrl}
                   placeholder={provider.defaultBaseUrl || t('settings.mediaProviderBaseUrlPlaceholder')}
                   aria-label={`${provider.label} ${t('settings.mediaProviderBaseUrl')}`}
+                  dir="auto"
                   disabled={disabled}
                   onChange={(e) => updateProvider(provider, { baseUrl: e.target.value })}
                 />
