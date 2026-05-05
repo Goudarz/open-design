@@ -97,7 +97,7 @@ export function AvatarMenu({
       </button>
       {open ? (
         <div className="avatar-popover" role="menu">
-          <div className="avatar-popover-head">
+          <div className="avatar-popover-head" dir="auto">
             <span className="who">
               {config.mode === 'daemon'
                 ? t('avatar.localCli')
