@@ -414,7 +414,7 @@ function ExampleCard({
             </span>
           ) : null}
         </div>
-        <div className="example-prompt">
+        <div className="example-prompt" dir="auto">
           {displayPrompt ? quotePrompt(locale, displayPrompt) : displayDescription}
         </div>
         <div className="example-card-actions">
