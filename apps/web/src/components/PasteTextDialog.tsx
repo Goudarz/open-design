@@ -31,6 +31,7 @@ export function PasteTextDialog({ onSave, onClose }: Props) {
             placeholder={t('pasteDialog.namePlaceholder')}
             onChange={(e) => setName(e.target.value)}
             autoFocus
+            dir="auto"
           />
         </label>
         <label>
@@ -40,6 +41,7 @@ export function PasteTextDialog({ onSave, onClose }: Props) {
             value={content}
             placeholder={t('pasteDialog.contentPlaceholder')}
             onChange={(e) => setContent(e.target.value)}
+            dir="auto"
           />
         </label>
         <div className="row">
