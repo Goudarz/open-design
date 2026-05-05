@@ -37,6 +37,9 @@ const DICTS: Record<Locale, Dict> = {
   'ja': ja,
 };
 
+// Locales that should set `dir="rtl"` on the <html> element: 'fa', 'ar', etc.
+const RTL_LOCALES: Locale[] = ['fa'];
+
 const LS_KEY = 'open-design:locale';
 
 // First-run default is English. We honor an explicit user pick saved to
@@ -76,6 +79,14 @@ export function I18nProvider({ initial, children }: ProviderProps) {
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('lang', locale);
+
+      // Set `dir="rtl"` on <html> for RTL languages, so that screen readers and CSS hooks work without each component having to set dir itself.
+      if (RTL_LOCALES.includes(locale)) {
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        // Remove any previously-set `dir` attribute for non-RTL languages, so that we don't accidentally inherit RTL layout if the user switches from an RTL language to a non-RTL language.
+        document.documentElement.removeAttribute('dir');
+      }
     }
   }, [locale]);
 
